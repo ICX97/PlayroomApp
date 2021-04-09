@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4c4b5d6e92b466fac884031459cb209" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="SonyModel.sysdiagram" Width="1.5" PointX="13.375" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Clan" Width="1.5" PointX="2.125" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Iznajmljivanje" Width="1.5" PointX="5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Joyped" Width="1.5" PointX="9" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Konzola" Width="1.5" PointX="9" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Pice" Width="1.5" PointX="10.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Racun" Width="1.5" PointX="5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Radnik" Width="1.5" PointX="5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Slusalouse" Width="1.5" PointX="9" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SonyModel.Stavka" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="SonyModel.FK_Iznajmljivanje_Clan" ManuallyRouted="false" />
+        <AssociationConnector Association="SonyModel.FK_Iznajmljivanje_Joyped" ManuallyRouted="false" />
+        <AssociationConnector Association="SonyModel.FK_Iznajmljivanje_Radnik" ManuallyRouted="false" />
+        <AssociationConnector Association="SonyModel.FK_Iznajmljivanje_Slusalice" ManuallyRouted="false" />
+        <AssociationConnector Association="SonyModel.FK_Iznamljivanje_Konzola" ManuallyRouted="false" />
+        <AssociationConnector Association="SonyModel.FK_Racun_Iznamljivanje" ManuallyRouted="false" />
+        <AssociationConnector Association="SonyModel.FK_Stavka_Pice" ManuallyRouted="false" />
+        <AssociationConnector Association="SonyModel.FK_Stavka_Racun" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SonyModel.Dostupnost" Width="1.5" PointX="2.125" PointY="2.625" />
+        <EntityTypeShape EntityType="SonyModel.KnjigaSanka" Width="1.5" PointX="0.75" PointY="4.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

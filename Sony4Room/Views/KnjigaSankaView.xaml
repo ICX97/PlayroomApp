@@ -1,0 +1,257 @@
+﻿<UserControl x:Class="Sony4Room.Views.KnjigaSankaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sony4Room.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="960">
+    <UserControl.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="#f5dd25">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="126"></ColumnDefinition>
+            <ColumnDefinition Width="180" ></ColumnDefinition>
+            <ColumnDefinition Width="160"></ColumnDefinition>
+            <ColumnDefinition Width="145"></ColumnDefinition>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+            <ColumnDefinition Width="160"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DockPanel  Grid.Row="0" Grid.Column="0" Grid.RowSpan="7">
+            <StackPanel>
+                <TextBlock TextAlignment="left" Margin="20,30,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="ColaVelika:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="ColaMala:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="FantaVelika:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="FantaMala:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Sprite:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Joy visnja:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Fuze tea:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Tube:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="AquaViva:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Rosa:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="KnjazMilos:"/>
+
+            </StackPanel>
+        </DockPanel>
+        <DockPanel  Grid.Row="0" Grid.Column="1" Grid.RowSpan="7">
+            <StackPanel Width="207">
+                <TextBox HorizontalAlignment="Left" Name="ColaVelika" Height="22" Margin="10,30,0,0" TextWrapping="Wrap" IsEnabled="False"  Width="50"/>
+                <TextBox HorizontalAlignment="Left" Name="ColaMala" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" IsEnabled="False"  Width="50"/>
+                <TextBox HorizontalAlignment="Right" Name="FantaVelika" Height="22" Margin="0,10,147,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="FantaMala" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="Sprite" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="JoyVisnja" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="FuzeTeaBreskva" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="Tube" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="AquaViva" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="Rosa" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="KnjazMilos" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel  Grid.Row="0" Grid.Column="1" Grid.RowSpan="7" HorizontalAlignment="Left" Margin="89,0,0,0" Width="64">
+            <StackPanel>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="ColaVelikaAdd_Clicked" Margin="5,30,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="ColaVelikaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="ColaMalaAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="ColaMalaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="FantaVelikaAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="FantaVelikaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="FantaMalaAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="FantaMalaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="SpriteAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="SpriteRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="JoyVisnjaAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="JoyvisnjaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="FuzeTeaAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="FuzeTeaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="TubeAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="TubeRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="AquaVivaAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="AquaVivaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="RosaAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="RosaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="KnjazMilosAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="KnjazMilosRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+            </StackPanel>
+
+        </DockPanel>
+
+        <DockPanel  Grid.Row="0" Grid.Column="2" Grid.RowSpan="7" Margin="0,0,0,0">
+            <StackPanel>
+                <TextBlock TextAlignment="left" Margin="10,-1,0,0" FontSize="16" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Poslednja izmena:" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaColaVelika" Height="22" Margin="10,12,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaColaMala" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaFantaVelika" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaFantaMala" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaSprite" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaJoyVisnja" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaFuzeTeaBreskva" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaTube" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaAquaViva" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaRosa" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaKnjazMilos" Height="22" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel  Grid.Row="0" Grid.Column="3" Grid.RowSpan="7">
+            <StackPanel>
+                <TextBlock TextAlignment="left" Margin="20,30,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Guarana:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Ultra:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Jelen:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Tuborg:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Veliki cips:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="MaliCips:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Veliki smoki:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Mali smoki:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Jafa:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Munchmallow:"/>
+                <TextBlock TextAlignment="left" Margin="20,10,0,0" FontSize="19" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="RumKasato:"/>
+
+            </StackPanel>
+        </DockPanel>
+        <DockPanel  Grid.Row="0" Grid.Column="4" Grid.RowSpan="7">
+            <StackPanel>
+                <TextBox Name="Guarana" Height="22" Margin="0,30,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="Ultra" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="Jelen" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="Tuborg" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="VelikiCips" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="MaliCips" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="VelikiSmokie" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="MaliSmokie" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="Jafa" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="Munchmallow" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+                <TextBox Name="RumKasato" Height="22" Margin="0,10,0,0" TextWrapping="Wrap"  Width="50" IsEnabled="False"/>
+            </StackPanel>
+        </DockPanel>
+
+        <DockPanel  Grid.Row="0" Grid.Column="5" Grid.RowSpan="7">
+            <StackPanel>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="GuaranaAdd_Clicked" Margin="5,30,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="GuaranaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="UltraAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="UltraRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="JelenAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="JelenRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="TuborgAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="TuborgRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="VelikiCipsAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="VelikiCipsRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="MaliCipsAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="MaliCipsRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="VelikiSmokieAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="VelikiSmokieRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="MaliSmokieAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="MaliSmokieRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="JafaAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="JafaRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="MunchmallowAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="MunchmallowRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Left" Background="Yellow" Content="+" Height="22" VerticalAlignment="Top" Width="22" Click="RumKasatoAdd_Clicked" Margin="5,10,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+                <Button HorizontalAlignment="Right" Background="Yellow" Content="-" Height="22" VerticalAlignment="Top" Width="22" Click="RumKasatoRemove_Clicked" Margin="40,-22,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"></Button>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel  Grid.Row="0" Grid.Column="6" Grid.RowSpan="7" Margin="0,0,0,0">
+            <StackPanel>
+                <TextBlock TextAlignment="left" Margin="10,-1,0,0" FontSize="16" FontFamily="Arial Rounded " TextWrapping="Wrap" Text="Poslednja izmena:" IsEnabled="False"/>
+                <TextBox HorizontalAlignment="Left" Name="PoslednjaGuarana" Height="22" Margin="10,13,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox  Name="PoslednjaUltra" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0"  TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaJelen" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaTuborg" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaVelikiCips" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaMaliCips" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaVelikiSmokie" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaMaliSmokie" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaJafa" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaMunchmallow" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+                <TextBox Name="PoslednjaRumKasato" Height="22" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"  Width="140" IsEnabled="False"/>
+            </StackPanel>
+        </DockPanel>
+
+        <DockPanel  Grid.Row="7" Grid.Column="1">
+            <StackPanel>
+                <Button Background="Yellow" Content="Export" Height="42" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Click="Export_Clicked" Margin="0,0,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" Style="{DynamicResource RoundedButtonStyle}"></Button>
+
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,157 @@
+﻿<Window x:Class="Sony4Room.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:Sony4Room.ViewModels"
+        xmlns:views="clr-namespace:Sony4Room.Views"
+        mc:Ignorable="d"
+        Background="#f5dd25" Title="MainWindow" Height="600" Width="1200" WindowStartupLocation="CenterScreen" FontSize="14">
+    <Window.Resources>
+        <DataTemplate x:Name="soba1ViewTemplate" DataType="{x:Type viewmodels:Soba1ViewModel}">
+            <views:Soba1View DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="soba2ViewTemplate" DataType="{x:Type viewmodels:Soba2ViewModel}">
+            <views:Soba2View DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="clanAddViewTemplate" DataType="{x:Type viewmodels:ClanAddViewModel}">
+            <views:ClanAddView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="clanEditViewTemplate" DataType="{x:Type viewmodels:ClanEditViewModel}">
+            <views:ClanEditView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="radnikAddViewTemplate" DataType="{x:Type viewmodels:RadnikAddViewModel}">
+            <views:RadnikAddView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="radnikEditViewTemplate" DataType="{x:Type viewmodels:RadnikEditViewModel}">
+            <views:RadnikEditView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="knjigaSankaViewTemplate" DataType="{x:Type viewmodels:KnjigaSankaViewModel}">
+            <views:KnjigaSankaView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="konzolaViewTemplate" DataType="{x:Type viewmodels:KonzolaEditViewModel}">
+            <views:KonzolaEditView DataContext="{Binding}"/>
+        </DataTemplate>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DockPanel Background="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
+            <StackPanel Orientation="Vertical" Margin="0,83,0,0">
+                <TextBlock Text="Sony4Room" Foreground="Yellow" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="27" FontFamily="Arial Rounded MT Bold "></TextBlock>
+                <Button Background="Yellow" Content="Soba1" Height="42" VerticalAlignment="Top" Width="182" Click="Soba1_Clicked" Margin="0,100,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" Style="{DynamicResource RoundedButtonStyle}"/>
+                <Button Background="Yellow" Content="Soba2" Height="42" VerticalAlignment="Top" Width="182" Click="Soba2_Clicked" Margin="0,60,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" Style="{DynamicResource RoundedButtonStyle}"/>
+
+                <TextBlock Foreground="Yellow"  Text="Cena konzola" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="-50,50,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"/>
+                <Button Background="Yellow"  Height="40" VerticalAlignment="Top" Width="40" Click="EditKonzola_Clicked" Margin="145,-30,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" Style="{DynamicResource RoundedButtonStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="Assets/Edit.png" Width="43" Height="43" Margin="-4,-3,0,0"/>
+                        <TextBlock Text="bla" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <TextBlock Foreground="Yellow"  Text="Clan" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="0,40,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold"/>
+                <Button Background="Yellow" Height="38" VerticalAlignment="Top" Width="38" Click="AddClan_Clicked" Margin="-80,5,0,0" Style="{DynamicResource RoundedButtonStyle}" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Assets/Add.png" Width="43" Height="43" Margin="-4,-3,0,0"/>
+                        <TextBlock Text="bla" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="Yellow"  Height="40" VerticalAlignment="Top" Width="40" Click="EditClan_Clicked" Margin="70,-40,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" Style="{DynamicResource RoundedButtonStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="Assets/Edit.png" Width="43" Height="43" Margin="-4,-3,0,0"/>
+                        <TextBlock Text="bla" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Background="Black" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4">
+            <StackPanel>
+                <TextBlock Foreground="Yellow" Text="Radnik" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,27,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" ></TextBlock>
+                <Button Background="Yellow"  Height="38" HorizontalAlignment="Center" VerticalAlignment="Top" Width="38" Click="AddRadnik_Clicked" Margin="-400,5,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" Style="{DynamicResource RoundedButtonStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Assets/Add.png" Width="43" Height="43" Margin="-4,-3,0,0"/>
+                        <TextBlock Text="bla" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="Yellow"  Height="40" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="40" Click="EditRadnik_Clicked" Margin="-175,-40,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" Style="{DynamicResource RoundedButtonStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="Assets/Edit.png" Width="43" Height="43" Margin="-4,-3,0,0"/>
+                        <TextBlock Text="bla" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="Yellow" Content="Knjiga Sanka" Height="42" VerticalAlignment="Top" Width="182" Click="Knjiga_Clicked" Margin="500,-42,0,0" FontSize="19" FontFamily="Arial Rounded MT Bold" Style="{DynamicResource RoundedButtonStyle}"></Button>
+            </StackPanel>
+        </DockPanel>
+        <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="4 " Content="{Binding}"/>
+    </Grid>
+</Window>

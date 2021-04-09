@@ -1,0 +1,710 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SonyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KnjigaSanka">
+          <Key>
+            <PropertyRef Name="IdKnjigaSanka" />
+          </Key>
+          <Property Name="IdKnjigaSanka" Type="int" Nullable="false" />
+          <Property Name="NazivPica" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stanje" Type="int" />
+          <Property Name="PoslednjaIzmena" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Clan">
+          <Key>
+            <PropertyRef Name="IdClan" />
+          </Key>
+          <Property Name="IdClan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="50" />
+          <Property Name="BrojDolaska" Type="int" />
+          <Property Name="BrojTelefona" Type="varchar" MaxLength="50" />
+          <Property Name="KumulativnoSati" Type="varchar" MaxLength="25" />
+          <Property Name="Napomena" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Dostupnost">
+          <Key>
+            <PropertyRef Name="IdDostupnosti" />
+          </Key>
+          <Property Name="IdDostupnosti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="20" />
+          <Property Name="Slobodna" Type="bit" />
+          <Property Name="BrojPoslednjegRacuna" Type="int" />
+        </EntityType>
+        <EntityType Name="Iznajmljivanje">
+          <Key>
+            <PropertyRef Name="IdIznajmljivanje" />
+          </Key>
+          <Property Name="IdIznajmljivanje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datum" Type="date" />
+          <Property Name="VremePocetka" Type="datetime" />
+          <Property Name="VremeZavrsavanja" Type="datetime" />
+          <Property Name="IdSlusalica" Type="int" />
+          <Property Name="IdJoypeda" Type="int" />
+          <Property Name="IdClan" Type="int" />
+          <Property Name="IdRadnika" Type="int" />
+          <Property Name="IdKonzole" Type="int" />
+        </EntityType>
+        <EntityType Name="Joyped">
+          <Key>
+            <PropertyRef Name="IdJoypeda" />
+          </Key>
+          <Property Name="IdJoypeda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImeJoypeda" Type="varchar" MaxLength="50" />
+          <Property Name="CenaJoypeda" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Konzola">
+          <Key>
+            <PropertyRef Name="IdKonzole" />
+          </Key>
+          <Property Name="IdKonzole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImeKonzole" Type="varchar" MaxLength="50" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+          <Property Name="CenaPoSatu" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pice">
+          <Key>
+            <PropertyRef Name="IdPica" />
+          </Key>
+          <Property Name="IdPica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Predmet" Type="varchar" MaxLength="50" />
+          <Property Name="Vrsta" Type="varchar" MaxLength="50" />
+          <Property Name="Podvrsta" Type="varchar" MaxLength="50" />
+          <Property Name="CenaPoKomadu" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Racun">
+          <Key>
+            <PropertyRef Name="IdRacuna" />
+          </Key>
+          <Property Name="IdRacuna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatumR" Type="date" />
+          <Property Name="Naplaceno" Type="bit" />
+          <Property Name="IzdatRacunPice" Type="bit" />
+          <Property Name="IzdatRacunIznajmljivanje" Type="bit" />
+          <Property Name="CenaIznajmljvanja" Type="varchar" MaxLength="50" />
+          <Property Name="CenaPica" Type="varchar" MaxLength="50" />
+          <Property Name="UkupnaCena" Type="varchar" MaxLength="50" />
+          <Property Name="IdIznajmljivanje" Type="int" />
+        </EntityType>
+        <EntityType Name="Radnik">
+          <Key>
+            <PropertyRef Name="IdRadnika" />
+          </Key>
+          <Property Name="IdRadnika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImePrz" Type="varchar" MaxLength="20" />
+          <Property Name="BrojTelefonaR" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Slusalice">
+          <Key>
+            <PropertyRef Name="IdSlusalica" />
+          </Key>
+          <Property Name="IdSlusalica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CenaSlusalica" Type="varchar" MaxLength="50" />
+          <Property Name="NazivSlusalica" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stavka">
+          <Key>
+            <PropertyRef Name="IdStavka" />
+          </Key>
+          <Property Name="IdStavka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRacuna" Type="int" />
+          <Property Name="KomadaPica" Type="int" />
+          <Property Name="IdPica" Type="int" />
+        </EntityType>
+        <Association Name="FK_Iznajmljivanje_Clan">
+          <End Role="Clan" Type="Self.Clan" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clan">
+              <PropertyRef Name="IdClan" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdClan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iznajmljivanje_Joyped">
+          <End Role="Joyped" Type="Self.Joyped" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Joyped">
+              <PropertyRef Name="IdJoypeda" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdJoypeda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iznajmljivanje_Radnik">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="IdRadnika" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdRadnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iznajmljivanje_Slusalice">
+          <End Role="Slusalice" Type="Self.Slusalice" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slusalice">
+              <PropertyRef Name="IdSlusalica" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdSlusalica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iznamljivanje_Konzola">
+          <End Role="Konzola" Type="Self.Konzola" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konzola">
+              <PropertyRef Name="IdKonzole" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdKonzole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Iznamljivanje">
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="0..1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iznajmljivanje">
+              <PropertyRef Name="IdIznajmljivanje" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="IdIznajmljivanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_Pice">
+          <End Role="Pice" Type="Self.Pice" Multiplicity="0..1" />
+          <End Role="Stavka" Type="Self.Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pice">
+              <PropertyRef Name="IdPica" />
+            </Principal>
+            <Dependent Role="Stavka">
+              <PropertyRef Name="IdPica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_Racun">
+          <End Role="Racun" Type="Self.Racun" Multiplicity="0..1" />
+          <End Role="Stavka" Type="Self.Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Racun">
+              <PropertyRef Name="IdRacuna" />
+            </Principal>
+            <Dependent Role="Stavka">
+              <PropertyRef Name="IdRacuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SonyModelStoreContainer">
+          <EntitySet Name="KnjigaSanka" EntityType="Self.KnjigaSanka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clan" EntityType="Self.Clan" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Dostupnost" EntityType="Self.Dostupnost" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Iznajmljivanje" EntityType="Self.Iznajmljivanje" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Joyped" EntityType="Self.Joyped" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Konzola" EntityType="Self.Konzola" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Pice" EntityType="Self.Pice" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Racun" EntityType="Self.Racun" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Radnik" EntityType="Self.Radnik" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Slusalice" EntityType="Self.Slusalice" Schema="sony" store:Type="Tables" />
+          <EntitySet Name="Stavka" EntityType="Self.Stavka" Schema="sony" store:Type="Tables" />
+          <AssociationSet Name="FK_Iznajmljivanje_Clan" Association="Self.FK_Iznajmljivanje_Clan">
+            <End Role="Clan" EntitySet="Clan" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iznajmljivanje_Joyped" Association="Self.FK_Iznajmljivanje_Joyped">
+            <End Role="Joyped" EntitySet="Joyped" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iznajmljivanje_Radnik" Association="Self.FK_Iznajmljivanje_Radnik">
+            <End Role="Radnik" EntitySet="Radnik" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iznajmljivanje_Slusalice" Association="Self.FK_Iznajmljivanje_Slusalice">
+            <End Role="Slusalice" EntitySet="Slusalice" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iznamljivanje_Konzola" Association="Self.FK_Iznamljivanje_Konzola">
+            <End Role="Konzola" EntitySet="Konzola" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Iznamljivanje" Association="Self.FK_Racun_Iznamljivanje">
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanje" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_Pice" Association="Self.FK_Stavka_Pice">
+            <End Role="Pice" EntitySet="Pice" />
+            <End Role="Stavka" EntitySet="Stavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_Racun" Association="Self.FK_Stavka_Racun">
+            <End Role="Racun" EntitySet="Racun" />
+            <End Role="Stavka" EntitySet="Stavka" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SonyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Clan">
+          <Key>
+            <PropertyRef Name="IdClan" />
+          </Key>
+          <Property Name="IdClan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrojDolaska" Type="Int32" />
+          <Property Name="BrojTelefona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KumulativnoSati" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Napomena" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Iznajmljivanjes" Relationship="Self.FK_Iznajmljivanje_Clan" FromRole="Clan" ToRole="Iznajmljivanje" />
+        </EntityType>
+        <EntityType Name="Iznajmljivanje">
+          <Key>
+            <PropertyRef Name="IdIznajmljivanje" />
+          </Key>
+          <Property Name="IdIznajmljivanje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <Property Name="VremePocetka" Type="DateTime" Precision="3" />
+          <Property Name="VremeZavrsavanja" Type="DateTime" Precision="3" />
+          <Property Name="IdSlusalica" Type="Int32" />
+          <Property Name="IdJoypeda" Type="Int32" />
+          <Property Name="IdClan" Type="Int32" />
+          <Property Name="IdRadnika" Type="Int32" />
+          <Property Name="IdKonzole" Type="Int32" />
+          <NavigationProperty Name="Clan" Relationship="Self.FK_Iznajmljivanje_Clan" FromRole="Iznajmljivanje" ToRole="Clan" />
+          <NavigationProperty Name="Joyped" Relationship="Self.FK_Iznajmljivanje_Joyped" FromRole="Iznajmljivanje" ToRole="Joyped" />
+          <NavigationProperty Name="Radnik" Relationship="Self.FK_Iznajmljivanje_Radnik" FromRole="Iznajmljivanje" ToRole="Radnik" />
+          <NavigationProperty Name="Slusalouse" Relationship="Self.FK_Iznajmljivanje_Slusalice" FromRole="Iznajmljivanje" ToRole="Slusalice" />
+          <NavigationProperty Name="Konzola" Relationship="Self.FK_Iznamljivanje_Konzola" FromRole="Iznajmljivanje" ToRole="Konzola" />
+          <NavigationProperty Name="Racuns" Relationship="Self.FK_Racun_Iznamljivanje" FromRole="Iznajmljivanje" ToRole="Racun" />
+        </EntityType>
+        <EntityType Name="Joyped">
+          <Key>
+            <PropertyRef Name="IdJoypeda" />
+          </Key>
+          <Property Name="IdJoypeda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImeJoypeda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CenaJoypeda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Iznajmljivanjes" Relationship="Self.FK_Iznajmljivanje_Joyped" FromRole="Joyped" ToRole="Iznajmljivanje" />
+        </EntityType>
+        <EntityType Name="Konzola">
+          <Key>
+            <PropertyRef Name="IdKonzole" />
+          </Key>
+          <Property Name="IdKonzole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImeKonzole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CenaPoSatu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Iznajmljivanjes" Relationship="Self.FK_Iznamljivanje_Konzola" FromRole="Konzola" ToRole="Iznajmljivanje" />
+        </EntityType>
+        <EntityType Name="Pice">
+          <Key>
+            <PropertyRef Name="IdPica" />
+          </Key>
+          <Property Name="IdPica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Predmet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Podvrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CenaPoKomadu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Stavkas" Relationship="Self.FK_Stavka_Pice" FromRole="Pice" ToRole="Stavka" />
+        </EntityType>
+        <EntityType Name="Racun">
+          <Key>
+            <PropertyRef Name="IdRacuna" />
+          </Key>
+          <Property Name="IdRacuna" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatumR" Type="DateTime" Precision="0" />
+          <Property Name="Naplaceno" Type="Boolean" />
+          <Property Name="IzdatRacunPice" Type="Boolean" />
+          <Property Name="IzdatRacunIznajmljivanje" Type="Boolean" />
+          <Property Name="CenaIznajmljvanja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CenaPica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UkupnaCena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdIznajmljivanje" Type="Int32" />
+          <NavigationProperty Name="Iznajmljivanje" Relationship="Self.FK_Racun_Iznamljivanje" FromRole="Racun" ToRole="Iznajmljivanje" />
+          <NavigationProperty Name="Stavkas" Relationship="Self.FK_Stavka_Racun" FromRole="Racun" ToRole="Stavka" />
+        </EntityType>
+        <EntityType Name="Radnik">
+          <Key>
+            <PropertyRef Name="IdRadnika" />
+          </Key>
+          <Property Name="IdRadnika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImePrz" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BrojTelefonaR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Iznajmljivanjes" Relationship="Self.FK_Iznajmljivanje_Radnik" FromRole="Radnik" ToRole="Iznajmljivanje" />
+        </EntityType>
+        <EntityType Name="Slusalouse">
+          <Key>
+            <PropertyRef Name="IdSlusalica" />
+          </Key>
+          <Property Name="IdSlusalica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CenaSlusalica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NazivSlusalica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Iznajmljivanjes" Relationship="Self.FK_Iznajmljivanje_Slusalice" FromRole="Slusalice" ToRole="Iznajmljivanje" />
+        </EntityType>
+        <EntityType Name="Stavka">
+          <Key>
+            <PropertyRef Name="IdStavka" />
+          </Key>
+          <Property Name="IdStavka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRacuna" Type="Int32" />
+          <Property Name="KomadaPica" Type="Int32" />
+          <Property Name="IdPica" Type="Int32" />
+          <NavigationProperty Name="Pice" Relationship="Self.FK_Stavka_Pice" FromRole="Stavka" ToRole="Pice" />
+          <NavigationProperty Name="Racun" Relationship="Self.FK_Stavka_Racun" FromRole="Stavka" ToRole="Racun" />
+        </EntityType>
+        <Association Name="FK_Iznajmljivanje_Clan">
+          <End Role="Clan" Type="Self.Clan" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clan">
+              <PropertyRef Name="IdClan" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdClan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iznajmljivanje_Joyped">
+          <End Role="Joyped" Type="Self.Joyped" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Joyped">
+              <PropertyRef Name="IdJoypeda" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdJoypeda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iznajmljivanje_Radnik">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="IdRadnika" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdRadnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iznajmljivanje_Slusalice">
+          <End Role="Slusalice" Type="Self.Slusalouse" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slusalice">
+              <PropertyRef Name="IdSlusalica" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdSlusalica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iznamljivanje_Konzola">
+          <End Role="Konzola" Type="Self.Konzola" Multiplicity="0..1" />
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konzola">
+              <PropertyRef Name="IdKonzole" />
+            </Principal>
+            <Dependent Role="Iznajmljivanje">
+              <PropertyRef Name="IdKonzole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Iznamljivanje">
+          <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="0..1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iznajmljivanje">
+              <PropertyRef Name="IdIznajmljivanje" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="IdIznajmljivanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_Pice">
+          <End Role="Pice" Type="Self.Pice" Multiplicity="0..1" />
+          <End Role="Stavka" Type="Self.Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pice">
+              <PropertyRef Name="IdPica" />
+            </Principal>
+            <Dependent Role="Stavka">
+              <PropertyRef Name="IdPica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_Racun">
+          <End Role="Racun" Type="Self.Racun" Multiplicity="0..1" />
+          <End Role="Stavka" Type="Self.Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Racun">
+              <PropertyRef Name="IdRacuna" />
+            </Principal>
+            <Dependent Role="Stavka">
+              <PropertyRef Name="IdRacuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SonyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Clans" EntityType="Self.Clan" />
+          <EntitySet Name="Iznajmljivanjes" EntityType="Self.Iznajmljivanje" />
+          <EntitySet Name="Joypeds" EntityType="Self.Joyped" />
+          <EntitySet Name="Konzolas" EntityType="Self.Konzola" />
+          <EntitySet Name="Pices" EntityType="Self.Pice" />
+          <EntitySet Name="Racuns" EntityType="Self.Racun" />
+          <EntitySet Name="Radniks" EntityType="Self.Radnik" />
+          <EntitySet Name="Slusalice" EntityType="Self.Slusalouse" />
+          <EntitySet Name="Stavkas" EntityType="Self.Stavka" />
+          <AssociationSet Name="FK_Iznajmljivanje_Clan" Association="Self.FK_Iznajmljivanje_Clan">
+            <End Role="Clan" EntitySet="Clans" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iznajmljivanje_Joyped" Association="Self.FK_Iznajmljivanje_Joyped">
+            <End Role="Joyped" EntitySet="Joypeds" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iznajmljivanje_Radnik" Association="Self.FK_Iznajmljivanje_Radnik">
+            <End Role="Radnik" EntitySet="Radniks" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iznajmljivanje_Slusalice" Association="Self.FK_Iznajmljivanje_Slusalice">
+            <End Role="Slusalice" EntitySet="Slusalice" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iznamljivanje_Konzola" Association="Self.FK_Iznamljivanje_Konzola">
+            <End Role="Konzola" EntitySet="Konzolas" />
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Iznamljivanje" Association="Self.FK_Racun_Iznamljivanje">
+            <End Role="Iznajmljivanje" EntitySet="Iznajmljivanjes" />
+            <End Role="Racun" EntitySet="Racuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_Pice" Association="Self.FK_Stavka_Pice">
+            <End Role="Pice" EntitySet="Pices" />
+            <End Role="Stavka" EntitySet="Stavkas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_Racun" Association="Self.FK_Stavka_Racun">
+            <End Role="Racun" EntitySet="Racuns" />
+            <End Role="Stavka" EntitySet="Stavkas" />
+          </AssociationSet>
+          <EntitySet Name="Dostupnosts" EntityType="SonyModel.Dostupnost" />
+          <EntitySet Name="KnjigaSankas" EntityType="SonyModel.KnjigaSanka" />
+        </EntityContainer>
+        <EntityType Name="Dostupnost">
+          <Key>
+            <PropertyRef Name="IdDostupnosti" />
+          </Key>
+          <Property Name="IdDostupnosti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Slobodna" Type="Boolean" />
+          <Property Name="BrojPoslednjegRacuna" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KnjigaSanka">
+          <Key>
+            <PropertyRef Name="IdKnjigaSanka" />
+          </Key>
+          <Property Name="IdKnjigaSanka" Type="Int32" Nullable="false" />
+          <Property Name="NazivPica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stanje" Type="Int32" />
+          <Property Name="PoslednjaIzmena" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SonyModelStoreContainer" CdmEntityContainer="SonyEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SonyModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clans">
+            <EntityTypeMapping TypeName="SonyModel.Clan">
+              <MappingFragment StoreEntitySet="Clan">
+                <ScalarProperty Name="IdClan" ColumnName="IdClan" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="BrojDolaska" ColumnName="BrojDolaska" />
+                <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+                <ScalarProperty Name="KumulativnoSati" ColumnName="KumulativnoSati" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iznajmljivanjes">
+            <EntityTypeMapping TypeName="SonyModel.Iznajmljivanje">
+              <MappingFragment StoreEntitySet="Iznajmljivanje">
+                <ScalarProperty Name="IdIznajmljivanje" ColumnName="IdIznajmljivanje" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="VremePocetka" ColumnName="VremePocetka" />
+                <ScalarProperty Name="VremeZavrsavanja" ColumnName="VremeZavrsavanja" />
+                <ScalarProperty Name="IdSlusalica" ColumnName="IdSlusalica" />
+                <ScalarProperty Name="IdJoypeda" ColumnName="IdJoypeda" />
+                <ScalarProperty Name="IdClan" ColumnName="IdClan" />
+                <ScalarProperty Name="IdRadnika" ColumnName="IdRadnika" />
+                <ScalarProperty Name="IdKonzole" ColumnName="IdKonzole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Joypeds">
+            <EntityTypeMapping TypeName="SonyModel.Joyped">
+              <MappingFragment StoreEntitySet="Joyped">
+                <ScalarProperty Name="IdJoypeda" ColumnName="IdJoypeda" />
+                <ScalarProperty Name="ImeJoypeda" ColumnName="ImeJoypeda" />
+                <ScalarProperty Name="CenaJoypeda" ColumnName="CenaJoypeda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konzolas">
+            <EntityTypeMapping TypeName="SonyModel.Konzola">
+              <MappingFragment StoreEntitySet="Konzola">
+                <ScalarProperty Name="IdKonzole" ColumnName="IdKonzole" />
+                <ScalarProperty Name="ImeKonzole" ColumnName="ImeKonzole" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="CenaPoSatu" ColumnName="CenaPoSatu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pices">
+            <EntityTypeMapping TypeName="SonyModel.Pice">
+              <MappingFragment StoreEntitySet="Pice">
+                <ScalarProperty Name="IdPica" ColumnName="IdPica" />
+                <ScalarProperty Name="Predmet" ColumnName="Predmet" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Podvrsta" ColumnName="Podvrsta" />
+                <ScalarProperty Name="CenaPoKomadu" ColumnName="CenaPoKomadu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Racuns">
+            <EntityTypeMapping TypeName="SonyModel.Racun">
+              <MappingFragment StoreEntitySet="Racun">
+                <ScalarProperty Name="IdRacuna" ColumnName="IdRacuna" />
+                <ScalarProperty Name="DatumR" ColumnName="DatumR" />
+                <ScalarProperty Name="Naplaceno" ColumnName="Naplaceno" />
+                <ScalarProperty Name="IzdatRacunPice" ColumnName="IzdatRacunPice" />
+                <ScalarProperty Name="IzdatRacunIznajmljivanje" ColumnName="IzdatRacunIznajmljivanje" />
+                <ScalarProperty Name="CenaIznajmljvanja" ColumnName="CenaIznajmljvanja" />
+                <ScalarProperty Name="CenaPica" ColumnName="CenaPica" />
+                <ScalarProperty Name="UkupnaCena" ColumnName="UkupnaCena" />
+                <ScalarProperty Name="IdIznajmljivanje" ColumnName="IdIznajmljivanje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Radniks">
+            <EntityTypeMapping TypeName="SonyModel.Radnik">
+              <MappingFragment StoreEntitySet="Radnik">
+                <ScalarProperty Name="IdRadnika" ColumnName="IdRadnika" />
+                <ScalarProperty Name="ImePrz" ColumnName="ImePrz" />
+                <ScalarProperty Name="BrojTelefonaR" ColumnName="BrojTelefonaR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slusalice">
+            <EntityTypeMapping TypeName="SonyModel.Slusalouse">
+              <MappingFragment StoreEntitySet="Slusalice">
+                <ScalarProperty Name="IdSlusalica" ColumnName="IdSlusalica" />
+                <ScalarProperty Name="CenaSlusalica" ColumnName="CenaSlusalica" />
+                <ScalarProperty Name="NazivSlusalica" ColumnName="NazivSlusalica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stavkas">
+            <EntityTypeMapping TypeName="SonyModel.Stavka">
+              <MappingFragment StoreEntitySet="Stavka">
+                <ScalarProperty Name="IdStavka" ColumnName="IdStavka" />
+                <ScalarProperty Name="IdRacuna" ColumnName="IdRacuna" />
+                <ScalarProperty Name="KomadaPica" ColumnName="KomadaPica" />
+                <ScalarProperty Name="IdPica" ColumnName="IdPica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dostupnosts">
+            <EntityTypeMapping TypeName="SonyModel.Dostupnost">
+              <MappingFragment StoreEntitySet="Dostupnost">
+                <ScalarProperty Name="BrojPoslednjegRacuna" ColumnName="BrojPoslednjegRacuna" />
+                <ScalarProperty Name="Slobodna" ColumnName="Slobodna" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="IdDostupnosti" ColumnName="IdDostupnosti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KnjigaSankas">
+            <EntityTypeMapping TypeName="SonyModel.KnjigaSanka">
+              <MappingFragment StoreEntitySet="KnjigaSanka">
+                <ScalarProperty Name="PoslednjaIzmena" ColumnName="PoslednjaIzmena" />
+                <ScalarProperty Name="Stanje" ColumnName="Stanje" />
+                <ScalarProperty Name="NazivPica" ColumnName="NazivPica" />
+                <ScalarProperty Name="IdKnjigaSanka" ColumnName="IdKnjigaSanka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
